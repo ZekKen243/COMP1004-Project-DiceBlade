@@ -21,7 +21,9 @@ class World {
 
             /*draw game objects*/
             Object.values(this.map.gameObjects).forEach(object => {
-                object.x += 0.05;
+                object.update({
+                    arrow: this.directionInput.direction
+                })
                 object.sprite.draw(this.ctx);
             })
             /*draw upper layer*/
@@ -36,6 +38,8 @@ class World {
     init() {
         this.map = new OverworldMap(window.OverworldMaps.TutorialMap);
         /*console.log("world: Hello!", this);*/
+        this.directionInput= new DirectionInput();
+        this.directionInput.init();
         this.startGameLoop();
 
     }

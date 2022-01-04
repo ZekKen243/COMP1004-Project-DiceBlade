@@ -24,8 +24,8 @@ class Sprite {
     }
 
     draw(ctx) {
-        const x = this.gameObject.x * 16 - 8;
-        const y = this.gameObject.y * 16 - 12;
+        const x = this.gameObject.x - 8;
+        const y = this.gameObject.y - 12;
 
         this.isLoaded && ctx.drawImage(this.image,
             0,0,

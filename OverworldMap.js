@@ -23,13 +23,14 @@ window.OverworldMaps = {
     TutorialMap: {
         lowerSrc: "assets/sprites/maps/tutorialMapMain.png",
         gameObjects: {
-            mainHero: new GameObject({
-                x: 5,
-                y: 6,
+            mainHero: new Person({
+                isPlayerControlled: true,
+                x: utils.withGrid(5),
+                y: utils.withGrid(6),
             }),
             npc1: new GameObject({
-                x: 1,
-                y: 1,
+                x: utils.withGrid(1),
+                y: utils.withGrid(3),
                 src: "assets/sprites/entities/placeholder.png"
             })
         }
@@ -39,8 +40,8 @@ window.OverworldMaps = {
         lowerSrc: "assets/sprites/maps/tutorialMap1.png",
         gameObjects: {
             mainHero: new GameObject({
-                x: 2,
-                y: 4,
+                x: utils.withGrid(2),
+                y: utils.withGrid(4),
             }),
             npc1: new GameObject({
                 x: 5,
