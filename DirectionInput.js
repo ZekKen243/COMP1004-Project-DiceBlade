@@ -2,11 +2,15 @@ class DirectionInput {
     constructor() {
         this.heldDirections = [];
 
-        this.map= {
+        this.map = {
             "KeyW" : "up",
             "KeyA" : "left",
             "KeyS" : "down",
             "KeyD" : "right",
+            "ArrowUp" : "up",
+            "ArrowLeft" : "left",
+            "ArrowDown" : "down",
+            "ArrowRight" : "right",
         }
     }
 

@@ -28,11 +28,11 @@ window.OverworldMaps = {
                 x: utils.withGrid(5),
                 y: utils.withGrid(6),
             }),
-            npc1: new GameObject({
+            npc1: new Person({
                 x: utils.withGrid(1),
                 y: utils.withGrid(3),
                 src: "assets/sprites/entities/placeholder.png"
-            })
+            }),
         }
     },
 
