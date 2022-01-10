@@ -67,9 +67,11 @@ class Sprite {
         }
     }
 
-    draw(ctx) {
-        const x = this.gameObject.x - 8;
-        const y = this.gameObject.y - 12;
+    draw(ctx, cameraPerson) {
+        const x = this.gameObject.x - 8 + utils.withGrid(10.5) - cameraPerson.x;
+        const y = this.gameObject.y - 12 + utils.withGrid(6) - cameraPerson.y;
+        /*the + utils part determines the offset to both x and y directions to centre the mainHero to the screen,
+        * giving an illusion that there is a "camera" following the player*/
 
         const [frameX, frameY] = this.frame;
 
