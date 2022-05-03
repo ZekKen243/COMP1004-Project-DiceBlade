@@ -42,6 +42,21 @@ class OverworldMap {
         })
     }
 
+    async startCutscene(events) {
+        this.isCutscenePlaying = true;
+        /*start a loop of async events*/
+        /*await each one*/
+        for (let i=0; i<events.length; i++) {
+            const eventHandler = new OverworldEvent({
+                event: events[i],
+                map: this,
+            })
+            await eventHandler.init();
+        }
+
+        this.isCutscenePlaying = false;
+    }
+
     addWall(x,y) {
         this.walls[`${x},${y}`] = true;
     }
@@ -65,15 +80,25 @@ window.OverworldMaps = {
                 y: utils.withGrid(6),
             }),
             npc1: new Person({
-                x: utils.withGrid(7),
+                x: utils.withGrid(8),
                 y: utils.withGrid(6),
-                src: "assets/sprites/entities/placeholder.png",
-                behaviorLoop: [
+                src: "assets/sprites/entities/mainHero.png",
+                behaviourLoop: [
                     { type: "walk", direction: "left" },
                     { type: "stand", direction: "up", time: 800 },
                     { type: "walk", direction: "up" },
                     { type: "walk", direction: "right" },
+                    { type: "stand", direction: "down", time: 800 },
                     { type: "walk", direction: "down" },
+                ]
+            }),
+            npc2: new Person({
+                x: utils.withGrid(10),
+                y: utils.withGrid(10),
+                src: "assets/sprites/entities/mainHero.png",
+                behaviourLoop: [
+                    { type: "stand", direction: "left", time: 2500 },
+                    { type: "stand", direction: "right", time: 2500 },
                 ]
             }),
         },

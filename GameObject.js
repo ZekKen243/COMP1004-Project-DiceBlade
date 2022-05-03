@@ -9,10 +9,10 @@ class GameObject {
         this.sprite = new Sprite({
             gameObject: this, /*this gives it access to properties above*/
             src: config.src || "assets/sprites/entities/mainHero.png", /*the sprite sheet to be used*/
-        })
+        });
 
-        this.behaviorLoop = config.behaviorLoop || [];
-        this.behaviorLoop = 0;
+        this.behaviourLoop = config.behaviourLoop || [];
+        this.behaviourLoopIndex = 0;
 
     }
 
@@ -21,9 +21,9 @@ class GameObject {
         this.isMounted = true;
         map.addWall(this.x, this.y);
 
-        /*If there is behavior, kick off after a short delay*/
+        /*If there is behaviour, kick off after a short delay*/
         setTimeout(() => {
-            this.doBehaviorEvent();
+            this.doBehaviourEvent(map);
         }, 10)
     }
 
@@ -31,29 +31,28 @@ class GameObject {
 
     }
 
-    async doBehaviorEvent(map) {
+    async doBehaviourEvent(map) {
 
         /*don't do anything if there is a more important cutscene or no config to do anything*/
-        if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
+        if (map.isCutscenePlaying || this.behaviourLoop.length === 0) {
             return;
         }
 
         /*set up event with relevant info*/
-        let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
-        eventConfig.who - this.id;
+        let eventConfig = this.behaviourLoop[this.behaviourLoopIndex];
+        eventConfig.who = this.id;
 
-
-        const eventHandler = new OverworldEvent({ map, event: eventConfig});
+        const eventHandler = new OverworldEvent({ map, event: eventConfig });
         await eventHandler.init();
         /*makes sure that the current event is finished before executing the next event*/
 
         /*set the next event to fire*/
-        this.behaviorLoopIndex += 1;
-        if (this.behaviorLoopIndex === this.behaviorLoop.length) {
-            this.behaviorLoopIndex = 0;
+        this.behaviourLoopIndex += 1;
+        if (this.behaviourLoopIndex === this.behaviorLoop.length) {
+            this.behaviourLoopIndex = 0;
         }
 
         /*do again*/
-        this.doBehaviorEvent(map);
+        this.doBehaviourEvent(map);
     }
 }

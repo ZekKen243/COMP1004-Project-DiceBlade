@@ -32,7 +32,9 @@ class World {
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
             /*draw game objects*/
-            Object.values(this.map.gameObjects).forEach(object => {
+            Object.values(this.map.gameObjects).sort((a,b) => {
+                return a.y - b.y;
+            }).forEach(object => {
                 object.sprite.draw(this.ctx, cameraPerson);
             })
             /*draw upper layer*/
@@ -54,6 +56,12 @@ class World {
 
         this.startGameLoop();
 
+        this.map.startCutscene([
+            { who: "hero", type: "walk", direction: "left" },
+            { who: "npc1", type: "stand", direction: "left", time: 1000 },
+            { who: "npc1", type: "walk", direction: "left" },
+            { who: "npc1", type: "walk", direction: "left" },
+        ])
     }
 
 }
