@@ -1,5 +1,6 @@
 class GameObject {
     constructor(config) {
+        this.id = null;
         this.isMounted = false;
         this.x = config.x || 0;
         this.y = config.y || 0;
@@ -10,15 +11,49 @@ class GameObject {
             src: config.src || "assets/sprites/entities/mainHero.png", /*the sprite sheet to be used*/
         })
 
+        this.behaviorLoop = config.behaviorLoop || [];
+        this.behaviorLoop = 0;
+
     }
 
     mount(map) {
         console.log("mounting")
         this.isMounted = true;
         map.addWall(this.x, this.y);
+
+        /*If there is behavior, kick off after a short delay*/
+        setTimeout(() => {
+            this.doBehaviorEvent();
+        }, 10)
     }
 
     update() {
 
+    }
+
+    async doBehaviorEvent(map) {
+
+        /*don't do anything if there is a more important cutscene or no config to do anything*/
+        if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
+            return;
+        }
+
+        /*set up event with relevant info*/
+        let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
+        eventConfig.who - this.id;
+
+
+        const eventHandler = new OverworldEvent({ map, event: eventConfig});
+        await eventHandler.init();
+        /*makes sure that the current event is finished before executing the next event*/
+
+        /*set the next event to fire*/
+        this.behaviorLoopIndex += 1;
+        if (this.behaviorLoopIndex === this.behaviorLoop.length) {
+            this.behaviorLoopIndex = 0;
+        }
+
+        /*do again*/
+        this.doBehaviorEvent(map);
     }
 }
