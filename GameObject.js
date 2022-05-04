@@ -34,7 +34,7 @@ class GameObject {
     async doBehaviourEvent(map) {
 
         /*don't do anything if there is a more important cutscene or no config to do anything*/
-        if (map.isCutscenePlaying || this.behaviourLoop.length === 0) {
+        if (map.isCutscenePlaying || this.behaviourLoop.length === 0 || this.isStanding) {
             return;
         }
 
@@ -48,7 +48,7 @@ class GameObject {
 
         /*set the next event to fire*/
         this.behaviourLoopIndex += 1;
-        if (this.behaviourLoopIndex === this.behaviorLoop.length) {
+        if (this.behaviourLoopIndex === this.behaviourLoop.length) {
             this.behaviourLoopIndex = 0;
         }
 

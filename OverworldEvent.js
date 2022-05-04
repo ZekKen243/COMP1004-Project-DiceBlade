@@ -4,6 +4,9 @@ class OverworldEvent {
         this.event = event;
     }
 
+
+
+
     stand(resolve) {
         const who = this.map.gameObjects[ this.event.who ];
         who.startBehaviour({
@@ -43,6 +46,14 @@ class OverworldEvent {
         }
 
         document.addEventListener("PersonWalkingComplete", completeHandler)
+    }
+
+    textMessage(resolve) {
+        const message = new TextMessage({
+            text: this.event.text,
+            onComplete: () => resolve()
+        })
+        message.init( document.querySelector(".gameContainer"))
     }
 
     init() {
