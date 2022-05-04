@@ -57,7 +57,7 @@ class World {
         this.startGameLoop();
 
         this.map.startCutscene([
-            { type: "textMessage", text: "Hello! Welcome to Dice Blade!"}
+            /*{ type: "textMessage", text: "Hello! Welcome to Dice Blade!"}*/
             /*{ who: "hero", type: "walk", direction: "left" },
             { who: "npc1", type: "stand", direction: "left", time: 1000 },
             { who: "npc1", type: "walk", direction: "left" },
