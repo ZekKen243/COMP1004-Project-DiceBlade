@@ -85,7 +85,7 @@ window.OverworldMaps = {
             npc1: new Person({
                 x: utils.withGrid(8),
                 y: utils.withGrid(6),
-                src: "assets/sprites/entities/mainHero.png",
+                src: "assets/sprites/entities/Hero1.png",
                 behaviourLoop: [
                     { type: "walk", direction: "left" },
                     { type: "stand", direction: "up", time: 800 },
@@ -98,7 +98,7 @@ window.OverworldMaps = {
             npc2: new Person({
                 x: utils.withGrid(10),
                 y: utils.withGrid(10),
-                src: "assets/sprites/entities/mainHero.png",
+                src: "assets/sprites/entities/Hero1.png",
                 behaviourLoop: [
                     { type: "stand", direction: "left", time: 2500 },
                     { type: "stand", direction: "right", time: 2500 },
@@ -120,6 +120,16 @@ window.OverworldMaps = {
             [utils.asGridCoord(9,2)] : true,
             [utils.asGridCoord(10,2)] : true,
             [utils.asGridCoord(12,2)] : true,
+            [utils.asGridCoord(6, 9)] : true,
+            [utils.asGridCoord(6, 10)] : true,
+            [utils.asGridCoord(7, 9)] : true,
+            [utils.asGridCoord(7, 10)] : true,
+            [utils.asGridCoord(10, 5)] : true,
+            [utils.asGridCoord(11, 5)] : true,
+            [utils.asGridCoord(11, 6)] : true,
+            [utils.asGridCoord(11, 7)] : true,
+            [utils.asGridCoord(11, 8)] : true,
+
 
             /*this is a key for the object*/
         }
