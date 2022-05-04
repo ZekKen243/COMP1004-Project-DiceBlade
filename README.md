@@ -1,6 +1,12 @@
 # COMP1004-Project-DiceBlade
 **This is my game project for the COMP1004 module - Dice Blade**
 
+**Author:** Kenneth Seterra
+
+**Course:** Game Development Technologies
+
+**Student ID:** 10721821
+
 ## Project Scope
 The main scope of this project is to create a game that would entertain the user in order to see what enriches leisure time which would be playing a game. This game aims to do a unique take on the turn-based RPG category centered around one thing: **Dice!**
 
